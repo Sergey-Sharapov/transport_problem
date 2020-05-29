@@ -2,6 +2,7 @@
 #include <fstream>
 #include <iostream>
 #include <algorithm>
+#include <string>
 
 using namespace std;
 
@@ -9,12 +10,24 @@ Transport::Transport(const char *fileName)
 {
 	int i, j;
 	ifstream input;
+	string rSym = "r:", str;
+
 	input.open(fileName);
 
 	input >> numSource;
 	input >> numReceiver;
 	sourceValues   = new double[numSource];
 	receiverValues = new double[numReceiver];
+	
+	/*input >> str;
+	if (rSym == str)
+	{
+		rating = new int[numReceiver];
+
+		for (i = 0; i < numReceiver; i++)
+			input >> rating[i];
+	}
+	*/
 
 	for (i = 0; i < numReceiver; i++)
 		input >> receiverValues[i];
@@ -110,6 +123,32 @@ void Transport::nwCorner()
 {
 	int i = 0, j = 0;
 	double minValue = 0;
+	double lack, sumR = 0, sumS = 0;
+	double * tmp;
+
+	//for (i = 0; i < numReceiver; i++)
+	//	sumR += receiverValues[i];
+	//for (i = 0; i < numSource; i++)
+	//	sumS += sourceValues[i];
+
+	//lack = sumR - sumS;
+
+	//if (lack > 0)
+	//{
+	//	tmp1 = new double[numSource];
+	//	for (int i = 0; i < numSource; i++)
+	//		tmp[i] = sourceValues[i];
+	//	delete sourceValues;
+	//	sourceValues = new double[++numSource];
+	//	for (int i = 0; i < numSource - 1; i++)
+	//		sourceValues[i] = tmp[i];
+	//	sourceValues[numSource - 1] = 
+	//	for(int ratPos = numReceiver; ratPos > 0; ratPos--)
+	//	{ 
+	//		
+	//	}
+	//}
+
 	while ((i < numSource) && (j < numReceiver))
 	{
 		minValue = min(sourceValues[i], receiverValues[j]);

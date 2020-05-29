@@ -14,6 +14,7 @@ private:
 
 	cell * cycle;
 
+	int * rating;
 	double **cost;
 	double **goods;
 
